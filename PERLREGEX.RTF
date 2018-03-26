@@ -1,0 +1,1333 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0\fswiss Arial;}{\f1\fswiss Courier New;}{\f2\fswiss Symbol;}}
+{\colortbl;\red0\green0\blue255;\red0\green0\blue0;\red0\green128\blue0;\red128\green0\blue0;}
+{\stylesheet{\fs32 \snext0 Normal;}
+}\pard\plain
+\pard \b\fs32\cf1\cb2 PerlRegEx unit
+\par \plain\fs16\cf2\cb2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3\cb2 \fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 TPerlRegEx is a Delphi VCL wrapper around the open source PCRE library, which implements Perl-Compatible Regular Expressions.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This version of TPerlRegEx is compatible with the TPerlRegEx class in the RegularExpressionsCore unit in Delphi XE.  In fact, the unit in Delphi XE is derived from the version of TPerlRegEx that you are using now.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 The supplied pcrelib.dll contains PCRE 7.9, compiled with Unicode support.  The supplied OBJ files contain PCRE 7.9, compiled with Unicode support.  By default, the OBJ files are used.  You can use the DLL if you have multiple applications using TPerlRegEx and you don't want to waste space by linking the OBJ files to be linked into each of those applications.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 For more information about PCRE, please visit \uldb \f1\cf1 http://www.regular-expressions.info/pcre.html\plain\f1\ul\fs20\cf1\cb2 \plain\fs20\cf2\cb2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 For more information about regular expressions in general, please visit \uldb \f1\cf1 http://www.regular-expressions.info/\plain\f1\ul\fs20\cf1\cb2 \plain\f1\fs20\cf4\cb2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2\cb2 You can download the latest version of TPerlRegEx at \uldb \f1\cf1 http://www.regular-expressions.info/delphi.html\plain\f1\ul\fs20\cf1\cb2 \plain\fs20\cf2\cb2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 TPerlRegEx is licensed under the Mozilla Public License, version 1.1.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This help file only describes the TPerlRegEx class itself.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Classes
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3\cb2 TPerlRegEx\plain\fs20\cf3\cb2 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \cf3 TPerlRegExList\plain\fs20\cf3\cb2 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Types
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3\cb2 TPerlRegExOptions\plain\fs20\cf3\cb2 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \cf3 TPerlRegExReplaceEvent\plain\fs20\cf3\cb2 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \cf3 TPerlRegExState\plain\fs20\cf3\cb2 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Constants
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3\cb2 MAX_GroupS\plain\fs20\cf3\cb2 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \plain\b\fs20\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 TPerlRegEx class\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 TPerlRegEx class
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 Properties\plain\fs16\cf3 \cf4 \tab \ul \ul\cf3 Methods\plain\fs16\cf3 \cf4 \tab \ul \ul\cf3 Events\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Unit
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 PerlRegEx\plain\fs20\cf3 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 The TPerlRegEx class aimes at providing any Delphi or C++Builder developer with the same, powerful regular expression capabilities provided by the Perl programming language, created by Larry Wall.  It is implemented as a \uldb \cf3 wrapper around the open source PCRE library\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Note that this help file assumes that you know what regular expressions are and what you can do with them.  If you don't, you can find a very detailed tutorial about regular expressions at \uldb \f1\cf1 http://www.regular-expressions.info/\plain\f1\ul\fs20\cf1 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Tasks\plain\fs20\cf2 
+\par \pard\li195\fi-195\tx195 \f2\fs18 \'b7\tab \plain\fs20\cf2 Declasre a variable of type TPerlRegEx and call its constructor.
+\par \f2\fs18 \'b7\tab \plain\fs20\cf2 Set the \uldb \cf3 Options property\plain\fs20\cf3 \cf2 
+\par \f2\fs18 \'b7\tab \plain\fs20\cf2 Assign a regular expression to the \uldb \cf3 RegEx property\plain\fs20\cf3 \cf2  if you did not do so at design time.
+\par \f2\fs18 \'b7\tab \plain\fs20\cf2 If you want to do replacements, attach an \uldb \cf3 OnReplace event handler\plain\fs20\cf3 \cf2  or put a string in the \uldb \cf3 Replacement property\plain\fs20\cf3 \cf2 
+\par \f2\fs18 \'b7\tab \plain\fs20\cf2 Assign a string to the \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \f2\fs18 \'b7\tab \plain\fs20\cf2 Call the \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \pard\li195\fi-195\tx195 \f2\fs18 \'b7\tab \plain\fs20\cf2 If you assigned an \uldb \cf3 OnReplace event handler\plain\fs20\cf3 \cf2  or the \uldb \cf3 Replacement property\plain\fs20\cf3 \cf2  and Match returned true, call the \uldb \cf3 Replace method\plain\fs20\cf3 \cf2 
+\par \f2\fs18 \'b7\tab \plain\fs20\cf2 Call the \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  method if Match returned true and you want to continue searching
+\par \f2\fs18 \'b7\tab \plain\fs20\cf2 Instead of calling \uldb \cf3 Match\plain\fs20\cf3 \cf2 , \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  and \uldb \cf3 Replace\plain\fs20\cf3 \cf2 , call the \uldb \cf3 ReplaceAll method\plain\fs20\cf3 \cf2  to do a global substitution in the Subject string, like Perl's s///g operator.
+\par \par
+\pard \b\cf1 Properties
+\par \plain\fs20\cf2 
+\par \pard\tx195\tx635 \uldb \cf3 Compiled\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 FoundMatch\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchLength\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchOffset\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Options\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 RegEx\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Replacement\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Start\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 State\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Stop\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Studied\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupCount\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupLengths\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupOffsets\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Groups\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Subject\plain\fs20\cf3 \cf2 
+\par 
+\par \par
+\pard \b\cf1 Methods
+\par \plain\fs20\cf2 
+\par \pard\tx195\tx635 \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 Compile\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 ComputeReplacement\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 EscapeRegExChars\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 Match\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 NamedGroup\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 Replace\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 ReplaceAll\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 Split method\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 StoreGroups\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 Study\plain\fs20\cf3 \cf2 
+\par \pard\tx195\tx635 
+\par \par
+\pard \b\cf1 Events
+\par \plain\fs20\cf2 
+\par \pard\tx195\tx635 \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 OnMatch\plain\fs20\cf3 \cf2 
+\par \tab \cf4 {\field {\*\fldinst import bm0.BMP}}\tab \uldb \cf3 OnReplace\plain\fs20\cf3 \cf2 
+\par 
+\par \par
+\pard \b\fs32\cf1 Compiled property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Compiled: Boolean;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 True if the \uldb \cf3 RegEx\plain\fs20\cf3 \cf2  has already been compiled by calling \uldb \cf3 Compile\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Read-only.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Compile method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 FoundMatch property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  FoundMatch: Boolean;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Returns True when \uldb \cf3 Match\plain\fs20\cf3 \cf2  and \uldb \cf3 Groups\plain\fs20\cf3 \cf2  indicate a match.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Read-only.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Match property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf4 
+\par \strike\cf3 
+\par \uldb \plain\uldb\fs20\cf3 Match method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Match property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Match: \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 The substring matched by the regular expression since the last call to the \uldb \cf3 Match method\plain\fs20\cf3 \cf2  or the \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Read-only.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 FoundMatch property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchLength property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchOffset property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf4 
+\par \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Match property example
+\par \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This example assumes you placed a TLabel and a TPerlRegEx on a form, and that PerlRegEx.Subject is set to a meaningful test string.
+\par 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   RegEx := 'Windows|Linux';  \i // Matches 'Windows' or 'Linux', whichever comes first\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  Label1.Caption := Match + ' rulez!';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 MatchLength property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  MatchLength: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Length of the substring matched by the regular expression since the last call to \uldb \cf3 Match method\plain\fs20\cf3 \cf2  or \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 .  This is a shortcut to \f1 Length(Match)\plain\fs20\cf2  and will execute much faster.
+\par Read-only.
+\par 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 FoundMatch property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchOffset property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 GroupLengths property\plain\fs20\cf3 \cf4 
+\par \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 MatchLength property example
+\par \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This example assumes you placed a TLabel and a TPerlRegEx on a form.
+\par 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Subject := 'Rating: AAA';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   RegEx := 'A+';  \i // Matches the first occurence of 'A', including any A's that may follow right after it\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  Label1.Caption := 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     'You have been rated with ' + IntToStr(MatchLength) + 'A''s'
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   \b else\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     Label1.Caption := 'You have a poor rating';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 MatchOffset property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  MatchOffset: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Character offset in the \uldb \cf3 Subject string\plain\fs20\cf3 \cf2  at which the \uldb \cf3 matched substring\plain\fs20\cf3 \cf2  starts.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Read-only.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 FoundMatch property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchLength property\plain\fs20\cf3 \strike 
+\par \uldb \plain\uldb\fs20\cf3 Groups property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 GroupOffsets property\plain\fs20\cf3 \cf4 
+\par \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 MatchOffset property example
+\par \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This example assumes you placed a TLabel and a TPerlRegEx on a form, and that PerlRegEx.Subject is set to a meaningful test string.
+\par 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   RegEx := 'Bye';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  Label1.Caption := 'Before typing "Bye", you typed: ' +
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     Copy(Subject, 1, MatchOffset-1);
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Options property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Options: TPerlRegExOptions;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \plain\fs20\cf2 These are the most important options you can specify:
+\par 
+\par \pard\li1415\fi-1415\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b preCaseLess\plain\fs20\cf2 \tab Tries to match the regex without paying attention to case.  If set, 'Bye' will match 'Bye', 'bye', 'BYE' and even 'byE', 'bYe', etc.  Otherwise, only 'Bye' will be matched.  Equivalent to Perl's /i modifier.
+\par \b preMultiLine\plain\fs20\cf2 \tab The ^ (beginning of string) and $ (ending of string) regex operaters will also match right after and right before a newline in the Subject string.  This effectively treats one string with multiple lines as multiple strings.  Equivalent to Perl's /m modifier.
+\par \pard\li1415\fi-1415\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b preSingleLine\plain\fs20\cf2  Normally, dot (.) matches anything but a newline (\'5cn).  With preSingleLine, dot (.) will match anything, including newlines.  This allows a multiline string to be regarded as a single entity.  Equivalent to Perl's /s modifier.
+\par \tab Note that preMultiLine and preSingleLine can be used together.
+\par \b preExtended\plain\fs20\cf2 \tab Allow regex to contain extra whitespace, newlines and Perl-style comments, all of which will be filtered out.  This is sometimes called "free-spacing mode".
+\par \pard\li1415\fi-1415\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b preAnchored\plain\fs20\cf2 \tab Allows the regex to match only at the start of the subject or right after the previous match.
+\par \b preUngreedy\plain\fs20\cf2 \tab Repeat operaters (?, *, +, \'7bnum,num\'7d) are greedy by default, i.e. they try to match as many characters as possible.  Set preUngreedy to use ungreedy repeat operators by default, i.e. they try to match as few characters as possible.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 State property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 TPerlRegExOptions type\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 RegEx property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  RegEx: \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 The regular expression to be matched.  See \uldb \f1\cf1 http://www.regular-expressions.info/\plain\f1\ul\fs20\cf1 \plain\fs20\cf2  to learn how to write a regular expression.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 The TPerlRegEx class uses the "PCRE" regular expression flavor explained at \uldb \f1\cf1 http://www.regular-expressions.info/refflavors.html\plain\f1\ul\fs20\cf1 \plain\fs20\cf2 .
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 RegEx property example
+\par \plain\fs20\cf2 
+\par \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := 'Perl';
+\par   Subject := 'Another example for TPerlRegEx';
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  ShowMessage('We found another Perl!');
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Replacement property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Replacement: \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 String to replace matched expression with. Backreferences \'5c0, \'5c1, \'5c2 etc. as well as $1, $2, $3, etc. will be substituted with \uldb \cf3 Groups[number]\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 The TPerlRegEx class uses the "JGsoft" replacement text flavor explained at \uldb \f1\cf1 http://www.regular-expressions.info/refreplace.html\plain\f1\ul\fs20\cf1 \plain\fs20\cf2 .
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 RegEx property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Replace method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 ReplaceAll method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 OnReplace event\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Replacement property example
+\par \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This example will show a messagebox saying "Foo is the name of the bar I like".
+\par 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Subject := 'I like to hang out at Foo bar';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   RegEx := '([A-Za-z]+) bar';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Replacement := '\'5c1 is the name of the bar I like';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  Replace;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   ShowMessage(RegEx.Subject);
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Start property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Start: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Starting position in \uldb \cf3 Subject\plain\fs20\cf3 \cf2  from which \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  begins.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 By default, MatchAgain continues from the end of the previous match, or from the start of the subject if there is no previous match.  Set the Start property to continue searching from another position.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Stop property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 State property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  State: TPerlRegExState;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 State of the \uldb \cf3 Subject string\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\li1415\fi-1415\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b preNotBOL\plain\fs20\cf2 \tab Do not match ^ or \'5cA at the start of the subject string.  Set this state if the subject string is not the logical beginning of the data the user is working with.
+\par 
+\par \b preNotEOL\plain\fs20\cf2 \tab Do not match $ or \'5cZ at the end of the subject string.  Set this state if the subject string is not the logical end of the data the user is working with.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\li1415\fi-1415\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b preNotEmpty\plain\fs20\cf2 \tab Do not match an empty string, i.e. if \uldb \cf3 Match\plain\fs20\cf3 \cf2  returns true, \uldb \cf3 Match\plain\fs20\cf3 \cf2  will never be an empty string.  This can be useful if everything in your regular expression is optional (e.g.: a?b?c?).  The match returned is normally the leftmost, longest match.  If the subject is "dabdabc", it would match at the empty string right before "d".  With this option, the regex will match "ab" (chars 2 and 3 in the subject), the leftmost, longest match that is not an empty string.  \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  will match "abc" at the end of the subject.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Options property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 TPerlRegExState type\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 State property example
+\par \plain\fs20\cf2 
+\par You can implement a "find from cursor" function as follows:
+\par 
+\par \f1 PerlRegEx1.Subject := Data.GetString(CursorPosition, Data.DataLength);
+\par PerlRegEx1.State := [preNotBOL];
+\par PerlRegEx1.Match;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Stop property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Stop: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Last character in Subject that \uldb \cf3 Match\plain\fs20\cf3 \cf2  and \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  search through.  By default, they search until the end of the string.  Use the Stop property to search through only part of the string without having to reallocate a truncated string.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Start property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Stop property example
+\par \plain\fs20\cf2 
+\par Search through characters 100..200 in S this way:
+\par 
+\par \f1 PerlRegEx1.Subject := S;
+\par PerlRegEx1.Start := 100;
+\par PerlRegEx1.Stop := 200;
+\par PerlRegEx1.MatchAgain;\plain\fs20\cf2 
+\par 
+\par This is faster than:
+\par 
+\par \f1 PerlRegEx1.Subject := Copy(S, 100, 100);
+\par PerlRegEx1.MatchAgain;\plain\fs20\cf2 
+\par 
+\par since the former method does not allocate any memory to keep a duplicate of S.
+\par \par
+\pard \b\fs32\cf1 Studied property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Studied: Boolean;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Read-only.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 True if the RegEx has already been studied by the \uldb \cf3 Study method\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Calling Study when Studied is already True, has no effect.
+\par 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 RegEx property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Compile method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Study method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 GroupCount property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  GroupCount: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Read-only.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Number of matched Groups stored in the \uldb \cf3 Groups\plain\fs20\cf3 \cf2  array.  This number is the number of the highest-numbered capturing group in your regular expression that actually participated in the last match.  It may be less than the number of capturing groups in your regular expression.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 E.g. when the regex "(a)|(b)" matches "a", GroupCount will be 1.  When the same regex matches "b", GroupCount will be 2.
+\par 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 GroupOffsets property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf2 
+\par 
+\par \par
+\pard \b\fs32\cf1 GroupLengths property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  GroupLengths[Index: Integer: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Read-only. 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Lengths of the Group strings in the \uldb \cf3 Groups\plain\fs20\cf3 \cf2  array.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Querying \f1 GroupLengths[Index]\plain\fs20\cf2  is faster than Length(Groups[Index]), since the former only needs to do a few integer computations, while the latter actually extracts a string from the \uldb \cf3 Subject\plain\fs20\cf3 \cf2 .
+\par Valid range for Index is 0..\uldb \cf3 GroupCount\plain\fs20\cf3 \cf2 .
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 GroupCount property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupOffsets property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 GroupOffsets property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  GroupOffsets[Index: Integer: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Read-only.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Character offsets in the Subject string of the \uldb \cf3 Groups\plain\fs20\cf3 \cf2  strings.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Valid range for Index is 0..\uldb \cf3 GroupCount\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \f1 Groups[Index] = Copy(Subject, GroupOffsets[Index], GroupLengths[Index]);\plain\fs20\cf2 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 GroupCount property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupLengths property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Groups property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Groups[Index: Integer: \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Read-only. 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Matched Groups after a regex has been matched.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1 Groups[0] = \uldb Match\plain\f1\fs20\cf2 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 The item count in the Groups array increases with one for every opening bracket in the regex.  The text matched by the part of the regex between that opening bracket and its corresponding closing bracket, will be put in the Groups array.
+\par 
+\par Valid range for Index is 0..\uldb \cf3 GroupCount\plain\fs20\cf3 \cf2 .  Note that GroupCount need not be equal to the number of opening brackets, since it may happen that only part of the regular expression played a role in the current match.
+\par 
+\par If you used named capturing groups in the regular expressions, use the \uldb \cf3 NamedGroup method\plain\fs20\cf3 \cf2  to retrieve the index number of a named group.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Match property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupCount property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupLengths property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupOffsets property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 NamedGroup method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 StoreGroups method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Groups property example
+\par \plain\fs20\cf2 
+\par \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := '(Joe|Jack|William|Avarell) (Dalton)? did it';
+\par   Subject := 'The sheriff told us that Joe did it.';
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2 
+\par     \b if\plain\f1\fs20\cf2  GroupCount = 2 \b then\plain\f1\fs20\cf2 
+\par       ShowMessage('Wanted: ' + Groups[1] + ' ' + Groups[2])
+\par     \b else\plain\f1\fs20\cf2 
+\par       ShowMessage('Wanted: ' + Groups[1] + ' (probably Dalton)');
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Subject property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Subject: \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 The string on which \uldb \cf3 Match\plain\fs20\cf3 \cf2  will try to match \uldb \cf3 RegEx\plain\fs20\cf3 \cf2 .
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 RegEx property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Subject property example
+\par \plain\fs20\cf2 
+\par \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := Edit1.Text;
+\par   Subject := Edit2.Text;
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  ShowMessage('The regex you entered in Edit1 matches the string in Edit2')
+\par     \b else\plain\f1\fs20\cf2  ShowMessage('The regex you entered in Edit1 does not match the string in Edit2');
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Compile method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 class\plain\f1\fs20\cf2  \b procedure\plain\f1\fs20\cf2  Compile;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Before it can be used, the regular expression needs to be compiled.  \uldb \cf3 Match\plain\fs20\cf3 \cf2  will call Compile automatically if you did not do so.
+\par If the regular expression will be applied in time-critical code, you may wish to compile it during your application's initialization.  You may also want to call \uldb \cf3 Study\plain\fs20\cf3 \cf2  to further optimize the execution of the regex.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Compiled property\plain\fs20\cf3 
+\par \uldb Match method\plain\fs20\cf3 
+\par \uldb Study method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 ComputeReplacement method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  ComputeReplacement: \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Returns \uldb \cf3 Replacement\plain\fs20\cf3 \cf2  with \uldb \cf3 backreferences\plain\fs20\cf3 \cf2  found by the last \uldb \cf3 match\plain\fs20\cf3 \cf2  filled in.  Unlike the \uldb \cf3 Replace method\plain\fs20\cf3 \cf2 , ComputeReplacement does not modify \uldb \cf3 Subject\plain\fs20\cf3 \cf2 .
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Replacement property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Replace method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 ComputeReplacement method example
+\par \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This example will show a messagebox saying "Foo is the name of the bar I like".
+\par 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Subject := 'I like to hang out at Foo bar';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   RegEx := '([A-Za-z]+) bar';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Replacement := '\'5c1 is the name of the bar I like';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  ShowMessage(RegEx.ComputeReplacement);
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 EscapeRegExChars method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  EscapeRegExChars(\b const\plain\f1\fs20\cf2  S: \b string\plain\f1\fs20\cf2 ): \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Escapes regex characters in S so that the regex engine can be used to match S as plain text.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 RegEx property\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 EscapeRegExChars method example
+\par \plain\fs20\cf2 
+\par To search for '1+1' as literal text, use:
+\par 
+\par \f1 PerlRegEx1.RegEx := PerlRegEx1.EscapeRegExChars('1+1');\plain\fs20\cf2 
+\par 
+\par which does the same as:
+\par 
+\par \f1 PerlRegEx1.RegEx := '1\'5c+1';\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Match method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  Match: Boolean;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Attempts to match the regular expression specified in the \uldb \cf3 RegEx property\plain\fs20\cf3 \cf2  on the string specified in the \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 .  If \uldb \cf3 Compile\plain\fs20\cf3 \cf2  has not yet been called, Match will do so for you.
+\par Call \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  to attempt to match the regex on the remainder of the subject string after a successful call to Match.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 RegEx property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Options property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf4 
+\par 
+\par \uldb \cf3 Compile method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf4 
+\par 
+\par \uldb \cf3 OnMatch event\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Match method example
+\par \plain\fs20\cf2 
+\par \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := Edit1.Text;
+\par   Subject := Edit2.Text;
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  ShowMessage('The regex you entered in Edit1 matches the string in Edit2')
+\par     \b else\plain\f1\fs20\cf2  ShowMessage('The regex you entered in Edit1 does not match the string in Edit2');
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 MatchAgain method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  MatchAgain: Boolean;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Attempt to match the regex to the remainder of the string after the previous match.  If you assigned the \uldb \cf3 Start property\plain\fs20\cf3 \cf2 , MatchAgain continues from that position instead.  If not, you should only call MatchAgain after calling \uldb \cf3 Match\plain\fs20\cf3 \cf2 .
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Start property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Stop property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 OnMatch event\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 MatchAgain method example
+\par \plain\fs20\cf2 
+\par \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := Edit1.Text;
+\par   Subject := Edit2.Text;
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par     I := 1;
+\par     \b while\plain\f1\fs20\cf2  MatchAgain \b do\plain\f1\fs20\cf2  I := I + 1;
+\par     ShowMessage(Format('The regular expression matched the subject string %d times.', [I]);
+\par   \b end\plain\f1\fs20\cf2 
+\par   \b else\plain\f1\fs20\cf2 
+\par     ShowMessage('The regular expression did not match the subject string at all.');
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 NamedGroup method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  NamedGroup(\b const\plain\f1\fs20\cf2  SEName: \b string\plain\f1\fs20\cf2 ): Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Returns the index of the named group SEName.  Use the returned value with the \uldb \cf3 Groups property\plain\fs20\cf3 \cf2  to retrieve the text matched by the named group.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 GroupCount property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupLengths property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 GroupOffsets property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 NamedGroup method example
+\par \plain\fs20\cf2 
+\par \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := '(?P<firstname>Joe|Jack|William|Avarell) did it';
+\par   Subject := 'The sheriff told us that Joe did it.';
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2 
+\par     ShowMessage('Wanted: ' + Groups[NamedGroup('firstname')]);
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Replace method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  Replace: \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Replace matched expression in \uldb \cf3 Subject\plain\fs20\cf3 \cf2  with \uldb \cf3 ComputeReplacement\plain\fs20\cf3 \cf2 . Returns the actual replacement text from ComputeReplacement.  You may only call Replace after a successful call to \uldb \cf3 Match\plain\fs20\cf3 \cf2  or \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Replacement property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 ComputeReplacement method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 ReplaceAll method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 OnReplace event\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Replace method example
+\par \plain\fs20\cf2 
+\par \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   Subject := 'Bill loves Hillary';
+\par   RegEx := 'Hillary';
+\par   Replacement := 'Monica';
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  Replace;
+\par   ShowMessage(Subject);   \i // "Bill loves Monica"\plain\f1\fs20\cf2 
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 ReplaceAll method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  ReplaceAll: Boolean;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Replaces all matches of \uldb \cf3 RegEx\plain\fs20\cf3 \cf2  in \uldb \cf3 Subject\plain\fs20\cf3 \cf2  with \uldb \cf3 ComputeReplacement\plain\fs20\cf3 \cf2 . Returns True if anything was replaced at all.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 RegEx property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Replacement property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Replace method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 OnReplace event\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 ReplaceAll method example
+\par \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 ReplaceAll is the equivalent of:
+\par 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Replace;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   \b while\plain\f1\fs20\cf2  MatchAgain \b do\plain\f1\fs20\cf2  Replace;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Split method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 procedure\plain\f1\fs20\cf2  Split(Strings: TStrings; Limit: Integer);
+\par \plain\fs20\cf2 
+\par \b\fs22 Description
+\par \plain\fs20\cf2 Splits \uldb \cf3 Subject\plain\fs20\cf3 \cf2  along regex matches.  The text between each regex match is appended to the list passed in the Strings parameter.  If Limit >= 1, at most Limit strings are appended.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 RegEx property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par 
+\par \par
+\pard \b\cf1 Split method example
+\par \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This example appends each item in the comma-delimited list in Edit1 to Memo1:
+\par 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   RegEx := ',';
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Subject := Edit1.Text;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Split(Memo1.Lines, 0);
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 StoreGroups method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 procedure\plain\f1\fs20\cf2  StoreGroups;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Stores duplicates of \uldb \cf3 Groups[]\plain\fs20\cf3 \cf2  so they and \uldb \cf3 ComputeReplacement\plain\fs20\cf3 \cf2  will still return the proper strings even if \uldb \cf3 Subject\plain\fs20\cf3 \cf2  is changed or cleared.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 This can be useful if you plan to modify the string that you assigned to Subject.  If you do that without clearing Subject first, Delphi will automatically create a duplicate of the subject string, which wastes memory and CPU time if the subject is very long.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Groups property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 StoreGroups method example
+\par \plain\fs20\cf2 
+\par The first example displays "Nobody wanted":
+\par 
+\par \f1 S := 'The sheriff told us that Joe did it.';
+\par \b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := '(Joe|Jack|William|Avarell) did it';
+\par   Subject := S;
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par     Subject := ''; \i // Save memory\plain\f1\fs20\cf2 
+\par     \b if\plain\f1\fs20\cf2  RegEx.GroupCount = 1 \b then\plain\f1\fs20\cf2 
+\par       S := 'Wanted: ' + RegEx.Groups[1]
+\par     \b else\plain\f1\fs20\cf2 
+\par       S := 'Nobody wanted';
+\par     ShowMessage(S);
+\par \pard   \b end\plain\f1\fs20\cf2 ;
+\par \b end\plain\f1\fs20\cf2 ;
+\par 
+\par \plain\fs20\cf2 The second example displays "Wanted: Joe".
+\par 
+\par \f1 S := 'The sheriff told us that Joe did it.';
+\par \b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := '(Joe|Jack|William|Avarell) did it';
+\par   Subject := S;
+\par   \b if\plain\f1\fs20\cf2  Match \b then\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par     RegEx.StoreGroups;
+\par     Subject := ''; \i // Save memory\plain\f1\fs20\cf2 
+\par     \b if\plain\f1\fs20\cf2  RegEx.GroupCount = 1 \b then\plain\f1\fs20\cf2 
+\par       S := 'Wanted: ' + RegEx.Groups[1]
+\par     \b else\plain\f1\fs20\cf2 
+\par       S := 'Nobody wanted';
+\par \pard     ShowMessage(S);
+\par   \b end\plain\f1\fs20\cf2 ;
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 Study method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 procedure\plain\f1\fs20\cf2  Study;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Study the regex. Studying takes time, but will make the execution of the regex a lot faster.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Call study if you will be using the same regex many times.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Study will also call \uldb \cf3 Compile\plain\fs20\cf3 \cf2  if this had not yet been done.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Compiled property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Studied property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Compile method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Study method example
+\par \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Depending on what the user entered in Edit1 and Memo1, RegEx might end up being a pretty complicated regular expression that wil be applied to the memo text a great many times.  This makes it worthwhile to spend a little extra time studying the regular expression.
+\par 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   RegEx := Edit1.Text;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Study;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Subject := Memo1.Lines.Text;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Replacement := Edit2.Text;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   ReplaceAll;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   Memo1.Lines.Text := Subject;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 OnMatch event
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  OnMatch: TNotifyEvent;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Triggered by \uldb \cf3 Match\plain\fs20\cf3 \cf2  and \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  after a successful match.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 OnReplace event
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \uldb \cf3 Example\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegEx\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  OnReplace: \uldb \cf3 TPerlRegExReplaceEvent\plain\f1\fs20\cf3 \cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Triggered by \uldb \cf3 Replace\plain\fs20\cf3 \cf2  and \uldb \cf3 ReplaceAll\plain\fs20\cf3 \cf2  just before the replacement is done, allowing you to determine the new string.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Replacement property\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 ComputeReplacement method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Replace method\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 ReplaceAll method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 OnReplace event example
+\par \plain\fs20\cf2 
+\par \f1\b with\plain\f1\fs20\cf2  PerlRegEx1 \b do\plain\f1\fs20\cf2  \b begin\plain\f1\fs20\cf2 
+\par   RegEx := 'Borland|Inprise|Microsoft';
+\par   Subject := Edit1.Text;
+\par   ReplaceAll;
+\par   Edit1.Text := Subject;
+\par \b end\plain\f1\fs20\cf2 ;
+\par 
+\par \b procedure\plain\f1\fs20\cf2  TForm1.PerlRegEx1Replace(Sender: TObject; \b var\plain\f1\fs20\cf2  ReplaceWith: \b string\plain\f1\fs20\cf2 );
+\par \b begin\plain\f1\fs20\cf2 
+\par   \b if\plain\f1\fs20\cf2  PerlRegEx1.Match = 'Inprise' \b then\plain\f1\fs20\cf2  ReplaceWith := 'Borland'
+\par     \b else\plain\f1\fs20\cf2  \b if\plain\f1\fs20\cf2  PerlRegEx1.Match = 'Borland' \b then\plain\f1\fs20\cf2  ReplaceWith := ':-)'
+\par \pard     \b else\plain\f1\fs20\cf2  ReplaceWith := ':-('
+\par \b end\plain\f1\fs20\cf2 ;\plain\fs20\cf2 
+\par \par
+\pard \b\fs32\cf1 TPerlRegExList class
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \cf4 \tab \ul \ul\cf3 Properties\plain\fs16\cf3 \cf4 \tab \ul \ul\cf3 Methods\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Unit
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 PerlRegEx\plain\fs20\cf3 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 You can add \uldb \cf3 TPerlRegEx objects\plain\fs20\cf3 \cf2  to a TPerlRegExList to match them all together on the same subject, as if they were one regex regex1|regex2|regex3|...
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 TPerlRegExList does not own the TPerlRegEx objects, just like a TList.  If a TPerlRegEx has been added to a TPerlRegExList, it should not be used in any other situation until it is removed from the list.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 TPerlRegEx class\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\cf1 Properties
+\par \plain\fs20\cf2 
+\par \pard\tx195\tx635 \uldb \cf3 Count\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchedRegEx\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 RegEx\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Start\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Stop\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Subject\plain\fs20\cf3 \cf2 
+\par 
+\par \par
+\pard \b\cf1 Methods
+\par \plain\fs20\cf2 
+\par \cf4 {\field {\*\fldinst import bm0.BMP}}\cf2  Key methods
+\par \pard\tx195\tx635 \uldb \cf3 Add\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 IndexOf\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Clear\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Delete\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Insert\plain\fs20\cf3 \cf2 
+\par 
+\par \par
+\pard \b\fs32\cf1 Count property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Count: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Number of \uldb \cf3 TPerlRegEx\plain\fs20\cf3 \cf2  objects in the list.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Read-only.
+\par \par
+\pard \b\fs32\cf1 MatchedRegEx property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  MatchedRegEx: TPerlRegEx;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Indicates which \uldb \cf3 TPerlRegEx\plain\fs20\cf3 \cf2  object in the list was responsible for finding the last match.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Read-only.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 RegEx property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  RegEx[Index: Integer]: TPerlRegEx;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 The regular expression of each \uldb \cf3 TPerlRegEx object\plain\fs20\cf3 \cf2  in the list.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Count property\plain\fs20\cf3 \strike 
+\par \uldb \plain\uldb\fs20\cf3 Add method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Start property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Start: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Starting position in \uldb \cf3 Subject\plain\fs20\cf3 \cf2  from which \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  begins.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 By default, MatchAgain continues from the end of the previous match, or from the start of the subject if there is no previous match.  Set the Start property to continue searching from another position.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Stop property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Stop property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Stop: Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Last character in \uldb \cf3 Subject\plain\fs20\cf3 \cf2  that \uldb \cf3 Match\plain\fs20\cf3 \cf2  and \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  search through.  By default, they search until the end of the string.  Use the Stop property to search through only part of the string without having to reallocate a truncated string.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Start property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Subject property
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 property\plain\f1\fs20\cf2  Subject: \b string\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 The string on which \uldb \cf3 Match\plain\fs20\cf3 \cf2  will try to match the regular expressions.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Add method\plain\fs20\cf3 \strike 
+\par \uldb \plain\uldb\fs20\cf3 Match method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Add method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  Add(ARegEx: TPerlRegEx): Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Add a regular expression to the list.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Delete method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Insert method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 IndexOf method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  IndexOf(ARegEx: TPerlRegEx): Integer;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Returns the index of the given \uldb \cf3 TPerlRegEx object\plain\fs20\cf3 \cf2  in the list.  Returns -1 if the list does not contain the object.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Add method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Delete method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Insert method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Match method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  Match: Boolean;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Attempts to match the regular expressions in the list on the string specified in the \uldb \cf3 Subject property\plain\fs20\cf3 \cf2 .  Call \uldb \cf3 MatchAgain\plain\fs20\cf3 \cf2  to attempt to match the regex on the remainder of the subject string after a successful call to Match.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 If more than one regular expression matches the subject, the leftmost match (i.e. the one with the lowest \uldb \cf3 MatchOffset\plain\fs20\cf3 \cf2 ) is returned by the \uldb \cf3 MatchedRegEx property\plain\fs20\cf3 \cf2 .  If more than one regular expression matches at the same position in the string, the one added to the list first is returned.  Use the MatchedRegEx property to get more information about the match.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 MatchedRegEx property\plain\fs20\cf3 \strike 
+\par \uldb \plain\uldb\fs20\cf3 MatchAgain method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 MatchAgain method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 function\plain\f1\fs20\cf2  MatchAgain: Boolean;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Attempt to match the regex to the remainder of the string after the previous match.  If you assigned the \uldb \cf3 Start property\plain\fs20\cf3 \cf2 , MatchAgain continues from that position instead.  If not, you should only call MatchAgain after calling \uldb \cf3 Match\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 If more than one regular expression matches the subject, the leftmost match (i.e. the one with the lowest \uldb \cf3 MatchOffset\plain\fs20\cf3 \cf2 ) is returned by the \uldb \cf3 MatchedRegEx property\plain\fs20\cf3 \cf2 .  If more than one regular expression matches at the same position in the string, the one added to the list first is returned.  Use the MatchedRegEx property to get more information about the match.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Note that MatchAgain continues from the end of the previous match.  Any matches by other regular expressions in the list that overlap with the previous match are ignored.  This is the same behavior as you would get when stringing all the regular expressions together as regex1|regex2|regex3... and using \uldb \cf3 TPerlRegEx.MatchAgain\plain\fs20\cf3 \cf2 .
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 MatchedRegEx property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Start property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Stop property\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Clear method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 procedure\plain\f1\fs20\cf2  Clear;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Removes all regular expressions from the list.  The TPerlRegEx objects are NOT freed.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Delete method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Delete method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 procedure\plain\f1\fs20\cf2  Delete(Index: Integer);
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Remove a \uldb \cf3 TPerlRegEx object\plain\fs20\cf3 \cf2  from the list.  The object is NOT freed.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Add method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Clear method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 Insert method
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Applies to
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 TPerlRegExList\plain\fs20\cf3 \cf2  class
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 procedure\plain\f1\fs20\cf2  Insert(Index: Integer; ARegEx: TPerlRegEx);
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 Add a regular expression to the list at a particular position.  The order of the regular expressions in the list matches only if two regular expressions match at the same position in the subject string.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 Add method\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 Match method\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 TPerlRegExOptions type
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Unit
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 PerlRegEx\plain\fs20\cf3 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 type\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   TPerlRegExOptions = \b set\plain\f1\fs20\cf2  \b of\plain\f1\fs20\cf2  (
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preCaseLess,       \i // /i -> Case insensitive\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preMultiLine,      \i // /m -> ^ and $ also match before/after a newline, not just at the beginning and the end of the string\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preSingleLine,     \i // /s -> Dot matches any character, including \'5cn (newline). Otherwise, it matches anything except \'5cn\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preExtended,       \i // /x -> Allow regex to contain extra whitespace, newlines and Perl-style comments, all of which will be filtered out\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preAnchored,       \i // /A -> Successful match can only occur at the start of the subject or right after the previous match\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preDollarEndOnly,  \i // /E\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preExtra,          \i // /X\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preUnGreedy        \i // Repeat operators (+, *, ?) are not greedy by default\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   );                   \i //   (i.e. they try to match the minimum number of characters instead of the maximum)\plain\f1\fs20\cf2 
+\par \plain\fs20\cf2 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 TPerlRegEx class\plain\fs20\cf3 \cf4 
+\par \uldb \cf3 Options property\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 TPerlRegExReplaceEvent type
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Unit
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 PerlRegEx\plain\fs20\cf3 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 type\plain\f1\fs20\cf2  TPerlRegExReplaceEvent = \b procedure\plain\f1\fs20\cf2 (Sender: TObject; \b var\plain\f1\fs20\cf2  ReplaceWith: \b string\plain\f1\fs20\cf2 ); \b of\plain\f1\fs20\cf2  \b object\plain\f1\fs20\cf2 ;
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 TPerlRegEx.\uldb \cf3 OnReplace\plain\fs20\cf3 \cf2  event type.
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Sender is the calling \uldb \cf3 TPerlRegEx object\plain\fs20\cf3 \cf2 .
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 ReplaceWith is equal to the string returned by \uldb \cf3 ComputeReplacement method\plain\fs20\cf3 \cf2 .  The matched expression will be replaced with whatever you assign to ReplaceWith.
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 TPerlRegEx class\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 OnReplace event\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 TPerlRegExState type
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \ul \ul\cf3 See also\plain\fs16\cf3 \b\fs22\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Unit
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 PerlRegEx\plain\fs20\cf3 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\f1\fs20\cf2   TPerlRegExState = \b set\plain\f1\fs20\cf2  \b of\plain\f1\fs20\cf2  (
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preNotBOL,         \i // Not Beginning Of Line: ^ does not match at the start of Subject\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preNotEOL,         \i // Not End Of Line: $ does not match at the end of Subject\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635     preNotEmpty        \i // Empty matches not allowed\plain\f1\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635   );
+\par \plain\fs20\cf2 
+\par \par
+\pard \b\cf1 See also
+\par \plain\fs20\cf2 
+\par \uldb \cf3 TPerlRegEx class\plain\fs20\cf3 \cf2 
+\par \uldb \cf3 State property\plain\fs20\cf3 \cf2 
+\par \par
+\pard \b\fs32\cf1 MAX_GroupS constant
+\par \plain\fs16\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 Unit
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \uldb \plain\uldb\fs20\cf3 PerlRegEx\plain\fs20\cf3 \cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Declaration
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \f1\fs20 const\plain\f1\fs20\cf2  MAX_GroupS = 99
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \plain\fs20\cf2 
+\par \pard\tx1435\tx2875\tx4315\tx5755\tx7195\tx8635 \b\fs22 Description
+\par \pard \plain\fs20\cf2 Maximum number of capturing groups you can use in your regular expression.}
